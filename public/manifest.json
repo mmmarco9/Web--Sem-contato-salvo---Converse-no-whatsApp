@@ -1,0 +1,21 @@
+{
+  "name": "Sem contato salvo - Converse no whatsApp",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "author": "João Cardoso e Marco Aurélio",
+  "description": "É uma ferramenta para otimizar o seu tempo! Converse no WhatsApp sem salvar contato. ",
+  "icons": { "16": "16.png", "48": "48.png", "128": "128.png" },
+  "background": {
+    "service_worker": "extension/background.js"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": { "16": "16.png", "48": "48.png", "128": "128.png" }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
