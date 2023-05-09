@@ -12,6 +12,7 @@ export const Content = styled(Box)`
     justify-content: center;
     gap: 20px;
     padding: 0;
+    
 
   }
 `;

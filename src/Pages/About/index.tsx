@@ -11,12 +11,12 @@ export function About() {
                 <Header titlePage="Sobre" />
 
                 <Paper elevation={24}>
-                    <Title textAlign="center" pt={1} pb={0}>Desenvolvedores:</Title>
-                    <Box display="flex" justifyContent="space-around" alignItems="center" mt={-1}  >
-                        <ButtonIcon color="secondary" onClick={() => window.open('https://www.instagram.com/joao_cardoso_silva/')}>
+                    <Title textAlign="center" pt={1} pb={0}>Desenvolvedor:</Title>
+                    <Box display="flex" justifyContent="center" alignItems="center" mt={-1} mb={2} >
+                        {/* <ButtonIcon color="secondary" onClick={() => window.open('https://www.instagram.com/joao_cardoso_silva/')}>
                             <InstagramIcon />  João
-                        </ButtonIcon>
-                        <ButtonIcon color="secondary" onClick={() => window.open('https://www.instagram.com/mmmarco9/')}>
+                        </ButtonIcon> */}
+                        <ButtonIcon  color="secondary" onClick={() => window.open('https://www.instagram.com/mmmarco9/')}>
                             <InstagramIcon />  Marco
                         </ButtonIcon>
                     </Box>

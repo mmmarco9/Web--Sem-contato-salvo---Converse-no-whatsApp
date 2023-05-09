@@ -31,13 +31,14 @@
     "react-phone-number-input": "^3.2.12",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
+    "react-singleton-hook": "^4.0.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "env-cmd -f dev.env craco start",
     "test": "craco test",
-    "build": "craco build", 
+    "build": "craco build",
     "build-prod": "set INLINE_RUNTIME_CHUNK=false&& env-cmd -f prod.env craco build && yarn build-prod:extension",
     "build-prod:app": "env-cmd -f prod.env craco build",
     "build-prod:extension": "env-cmd -f prod.env webpack --config extension/webpack.config.js",
