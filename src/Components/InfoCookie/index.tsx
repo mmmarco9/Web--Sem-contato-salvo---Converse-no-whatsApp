@@ -24,7 +24,7 @@ export function InfoDisableCookie() {
                     Ou
                 </Title>
 
-                <Title textAlign="center">Se o problema persitir, por favor mande uma mensagem para o <br /> WhatsApp: (55) 99121-1888</Title>
+                <Title textAlign="center">Se o problema persitir, por favor mande uma mensagem para o <br /> WhatsApp: (55) 5555-5555</Title>
 
                 {chrome.runtime && (
                     <Box

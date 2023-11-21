@@ -1,9 +1,9 @@
 {
-  "name": "Sem contato salvo - Converse no whatsApp",
-  "version": "0.2.0",
+  "name": "Sem salvar contato - abra nova conversa no whats",
+  "version": "0.6.0",
   "manifest_version": 3,
-  "author": "João Cardoso e Marco Aurélio",
-  "description": "Converse no WhatsApp sem precisar salvar contato! Experimente e comece um bate-papo sem complicações. É grátis e fácil de usar!",
+  "author": "Marco Aurélio",
+  "description": "Experimente e comece um bate-papo sem complicações. É grátis e fácil de usar!",
   "icons": { "16": "16.png", "48": "48.png", "128": "128.png" },
   "background": {
     "service_worker": "extension/background.js"

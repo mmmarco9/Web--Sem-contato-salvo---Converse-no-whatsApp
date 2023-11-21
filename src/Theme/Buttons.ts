@@ -1,4 +1,4 @@
-import { styled, Button, IconButton } from "@mui/material";
+import { styled, IconButton } from "@mui/material";
 
 export const ButtonBack = styled(IconButton)`
   && {
@@ -9,18 +9,17 @@ export const ButtonBack = styled(IconButton)`
     transition: 0.8s;
     &:hover {
       color: #ffffff;
-      background: #5EBC67
+      background: #5ebc67;
     }
   }
 `;
 
 export const ButtonIcon = styled(IconButton)`
-&& {
-     transition: 0.8s;
+  && {
+    transition: 0.8s;
     &:hover {
       color: #ffffff;
-      background: #5EBC67
+      background: #5ebc67;
     }
-
-}
-`
+  }
+`;

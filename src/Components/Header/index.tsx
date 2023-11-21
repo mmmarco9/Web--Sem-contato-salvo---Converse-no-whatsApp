@@ -1,34 +1,31 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import HelpIcon from '@mui/icons-material/Help';
-import CloseIcon from "@mui/icons-material/Close";
 
 import { Back, Content, Buttons, Title } from "./style";
 import { ButtonIcon } from "@/Theme/Buttons";
-import { Box, Divider, Popover, Tooltip, Typography, Menu, Dialog } from "@mui/material";
+import { Tooltip, Menu } from "@mui/material";
 import { Logo, TitlePage } from "@/Theme/globalStyles";
 import { MenuItem } from "./MenuItem";
 import logo from "@/Assets/logo.png";
+import GoogleReviewButton from "../GoogleReviewButton";
 
 type HeaderProps = {
   titlePage: string;
   showButtonMenu?: boolean;
-
 };
 
 export function Header({ titlePage, showButtonMenu }: HeaderProps) {
   const navigate = useNavigate();
-  const location = useLocation()
-  const [anchorBtnMenu, setAnchorBtnMenu] = useState<null | HTMLElement>(null)
-  const [openDialog, setOpenDialog] = useState(false)
-  const hasPageHome = location.pathname.toString() === "/"
+  const location = useLocation();
+  const [anchorBtnMenu, setAnchorBtnMenu] = useState<null | HTMLElement>(null);
+  const hasPageHome = location.pathname.toString() === "/";
   const openMenu = Boolean(anchorBtnMenu);
 
   function handleClickBack() {
-    navigate(-1)
+    navigate(-1);
   }
 
   function handleOpenMenu(event: React.MouseEvent<HTMLButtonElement>) {
@@ -38,11 +35,6 @@ export function Header({ titlePage, showButtonMenu }: HeaderProps) {
   function handleCloseMenu() {
     setAnchorBtnMenu(null);
   }
-
-  function handleCloseDialog() {
-    setOpenDialog(false);
-  }
-
 
   return (
     <>
@@ -62,14 +54,14 @@ export function Header({ titlePage, showButtonMenu }: HeaderProps) {
           <Title>{titlePage}</Title>
         </TitlePage>
         {showButtonMenu && (
-          <Buttons>
-            <ButtonIcon onClick={handleOpenMenu}>
+          <Buttons display="flex" alignItems="center" justifyContent="end">
+            <GoogleReviewButton />
+            <ButtonIcon onClick={handleOpenMenu} size="small">
               <MoreVertIcon sx={{ color: "#888888" }} />
             </ButtonIcon>
           </Buttons>
         )}
       </Content>
-
 
       <Menu
         id="demo-positioned-menu"
@@ -77,26 +69,18 @@ export function Header({ titlePage, showButtonMenu }: HeaderProps) {
         anchorEl={anchorBtnMenu}
         open={openMenu}
         onClose={handleCloseMenu}
-        anchorOrigin={
-          {
-            horizontal: "left",
-            vertical: "bottom"
-          }
-        }
+        anchorOrigin={{
+          horizontal: "left",
+          vertical: "bottom",
+        }}
         PaperProps={{
           style: {
-
-            overflow: "hidden"
+            overflow: "hidden",
           },
         }}
       >
-
         <MenuItem />
       </Menu>
-
-
-
     </>
-
   );
 }

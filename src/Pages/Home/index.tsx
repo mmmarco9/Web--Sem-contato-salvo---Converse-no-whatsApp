@@ -1,21 +1,14 @@
 import { FormEvent, useState } from "react";
 import { useSnackbar } from "notistack";
 
-import {
-  Button,
-  Paper,
-  Box,
-  Checkbox,
-  FormControlLabel,
-  Tooltip,
-} from "@mui/material";
+import { Button, Paper, Box, Checkbox, FormControlLabel } from "@mui/material";
 
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 
 import { Header } from "@/Components/Header";
 import { Content, Page } from "@/Theme/globalStyles";
-import { useWhatsApp } from "@/Hook/useWhatsApp";
+
 import { useWapiService } from "@/Hook/useWapiService";
 
 export function Home() {
@@ -27,7 +20,6 @@ export function Home() {
     setNumberPhone(number);
   }
   const { wapiService } = useWapiService();
-  console.log("numeros", numberPhone);
 
   function openChat(e: FormEvent) {
     e.preventDefault();
@@ -46,7 +38,6 @@ export function Home() {
     setTypeApp(select);
   }
 
-  console.log(window.location.pathname, "window.location.pathname");
   if (chrome.extension.getViews({ type: "popup" }).length > 0) {
     return (
       <Page>

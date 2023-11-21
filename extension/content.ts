@@ -1,5 +1,4 @@
 import { ViewController } from "./App/viewController";
-import { getWhatsAppHtmlTargetBySelector } from "./utils/getWhatsAppHtmlTarget";
 import { injectJs } from "./utils/injectJs";
 import { isWhatsAppWebReady } from "./utils/isWhatsAppWebReady";
 
@@ -12,17 +11,14 @@ function setup() {
     }, 1000);
     return;
   }
-  injectJs({ src: chrome.runtime.getURL("/extension/wppconnect-wa.js") });
-  /*   injectJs({ src: chrome.runtime.getURL("/extension/wapi_agile.js") }); */
+
   injectJs({ src: chrome.runtime.getURL("/extension/script.js") });
   addOpenMessageListButton();
-
   handleClickOutsideView();
 }
 
 setup();
 
-// View Controller
 const messagesView = new ViewController({
   name: "sender-app-messages",
   anchorElementSelector: "header:first-child > div:last-child span ",
@@ -31,24 +27,7 @@ const messagesView = new ViewController({
   height: 600,
 });
 
-// function initOnChatChangeListener() {
-//   var target = getWhatsAppHtmlTargetBySelector("activeChatContainer");
-
-//   if (!target) {
-//   }
-
-//   var observer = new MutationObserver(function (mutations) {
-//     addOpenMessageListButton();
-//      sendChatChangedEvent();
-//   });
-
-//   var config = { attributes: true, childList: true, characterData: true };
-
-//   observer.observe(target!, config);
-// }
-
 function addOpenMessageListButton() {
-  // Add button with icon
   var button = document.getElementById("open-iframe");
   if (button) {
     return;
@@ -59,14 +38,12 @@ function addOpenMessageListButton() {
   button.style.fill = "#54656f";
   button.style.padding = "5px";
   button.title = "Abrir chat sem contato salvo";
-  button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M10 8h8V6h-8Zm0 3h8V9h-8Zm0 3h5v-2h-5ZM7 8q.425 0 .713-.287Q8 7.425 8 7t-.287-.713Q7.425 6 7 6t-.713.287Q6 6.575 6 7t.287.713Q6.575 8 7 8Zm0 3q.425 0 .713-.288Q8 10.425 8 10t-.287-.713Q7.425 9 7 9t-.713.287Q6 9.575 6 10t.287.712Q6.575 11 7 11Zm0 3q.425 0 .713-.288Q8 13.425 8 13t-.287-.713Q7.425 12 7 12t-.713.287Q6 12.575 6 13t.287.712Q6.575 14 7 14Zm-5 8V4q0-.825.588-1.413Q3.175 2 4 2h16q.825 0 1.413.587Q22 3.175 22 4v12q0 .825-.587 1.413Q20.825 18 20 18H6Zm2-4.825L5.175 16H20V4H4ZM4 4v13.175Z"/></svg>`;
+  button.innerHTML = `<svg width="24px" height="24px" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5 8L5 2" stroke="#5EBC67" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M3.2697 9.80446C3.09354 10.5072 3 11.2427 3 12C3 16.9706 7.02944 21 12 21H16.5C17.8978 21 18.5967 21 19.1481 20.7716C19.8831 20.4672 20.4672 19.8831 20.7716 19.1481C21 18.5967 21 17.8978 21 16.5V12C21 7.02944 16.9706 3 12 3C11.2427 3 10.5072 3.09354 9.80446 3.2697C10.2353 3.71885 10.5 4.32851 10.5 5C10.5 6.38071 9.38071 7.5 8 7.5H7.5V8C7.5 9.38071 6.38071 10.5 5 10.5C4.32851 10.5 3.71885 10.2353 3.2697 9.80446ZM9 10C8.44772 10 8 10.4477 8 11C8 11.5523 8.44772 12 9 12H15C15.5523 12 16 11.5523 16 11C16 10.4477 15.5523 10 15 10H9ZM12 14C11.4477 14 11 14.4477 11 15C11 15.5523 11.4477 16 12 16H15C15.5523 16 16 15.5523 16 15C16 14.4477 15.5523 14 15 14H12Z" fill="#5EBC67"></path> <path d="M2 5L8 5" stroke="#5EBC67" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`;
   document
     .querySelector("header:first-child > div:last-child span ")!
     .appendChild(button);
-  // Add click event_2lSWV _3cjY2 copyable-area
   button.addEventListener("click", () => {
     messagesView.toggle();
-
     setTimeout(() => {
       isOpening = true;
     }, 500);
@@ -83,3 +60,12 @@ function handleClickOutsideView() {
     }
   });
 }
+
+function handleKeyDown(event: KeyboardEvent) {
+  if (event.ctrlKey && event.altKey && event.key === "a") {
+    messagesView.toggle();
+    isOpening = true;
+  }
+}
+
+document.addEventListener("keydown", handleKeyDown);

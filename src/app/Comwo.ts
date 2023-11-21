@@ -2,14 +2,7 @@ import { v4 as uuid } from "uuid";
 // method safely enables cross - origin communication between Window objects; e.g.,
 // between a page and a pop - up that it spawned, or between a page and an iframe embedded within it
 
-type CommandNames =
-  | "sendTextMessage"
-  | "sendAudioMessage"
-  | "getActiveChat"
-  | "getMe"
-  | "sendImageOrVideoMessage"
-  | "sendFilePdf"
-  | "openChat"
+type CommandNames = "openChat";
 
 type Command = {
   name: CommandNames;
@@ -57,7 +50,7 @@ export class ComwoClient {
           requestId: requestId,
           data: command.data,
         },
-        "*",
+        "*"
       );
 
       this._requests.push({
